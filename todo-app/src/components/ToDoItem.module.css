@@ -1,0 +1,7 @@
+.todoItem {
+    color: red;
+}
+
+.todoItemDone {
+    text-decoration: line-through;
+}
