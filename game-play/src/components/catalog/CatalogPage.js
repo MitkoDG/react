@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
+import * as gameServices from "../../services/gameServices"
 import GameCard from "./GameCard";
 
 
-
-const GameCatalog = () => {
+const GameCatalog = ({
+  navigationChangeHandler
+}) => {
   const [games, setGames] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3030/data/games?sortBy=_createdOn%20desc')
-      .them(res => res.json())
-      .then(result =>
-        setGames(result))
+      gameServices.getAll()
+      .then(result => {
+        setGames(result)})
   }, []);
 
   return (
@@ -18,7 +19,7 @@ const GameCatalog = () => {
       <h1>All Games</h1>
 
       { games.length > 0
-      ? games.map(x => <GameCard key={x._id} game={x} />)
+      ? games.map(x => <GameCard key={x._id} game={x} navigationChangeHandler={navigationChangeHandler}/>)
       : <h3 className="no-articles">No articles yet</h3>}
 
       

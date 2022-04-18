@@ -15,19 +15,21 @@ import NoPage from "./components/NoPage"
 function App() {
   const [page, setPage] = useState('/')
 
+  const navigationChangeHandler = (path) =>{
+    setPage(path);
+  }
+
   const routers = {
     '/': <WelcomeWorld />,
-    '/gameCatalog': <GameCatalog />,
+    '/gameCatalog': <GameCatalog navigationChangeHandler={navigationChangeHandler}/>,
     '/register': <Register />,
     '/create': <CreateGame />,
     '/login': <Login />,
     '/editGame': <EditGame />,
+    // '/details',
 
   }
 
-  const navigationChangeHandler = (path) =>{
-    setPage(path);
-  }
 
   return (
     <div id="box">
