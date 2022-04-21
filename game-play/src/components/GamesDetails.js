@@ -1,5 +1,6 @@
 
-const GameDetails = () =>{
+
+const GameDetails = ({id}) =>{
     return(
 <section id="game-details">
         <h1>Game Details</h1>

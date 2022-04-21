@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Route, Switch, Link } from "react-router-dom";
 
 import GameCatalog from "./components/catalog/CatalogPage";
 import CreateGame from "./components/CreateGame";
@@ -13,15 +14,10 @@ import NoPage from "./components/NoPage"
 
 
 function App() {
-  const [page, setPage] = useState('/')
-
-  const navigationChangeHandler = (path) =>{
-    setPage(path);
-  }
 
   const routers = {
     '/': <WelcomeWorld />,
-    '/gameCatalog': <GameCatalog navigationChangeHandler={navigationChangeHandler}/>,
+    '/gameCatalog': <GameCatalog />,
     '/register': <Register />,
     '/create': <CreateGame />,
     '/login': <Login />,
@@ -33,14 +29,23 @@ function App() {
 
   return (
     <div id="box">
-      <Header 
-      navigationChangeHandler={navigationChangeHandler}
-      />
+      <Header />
 
 
       <main id="main-content">
-        { routers[page] || <NoPage />}
+        <Switch>
+          <Route path="/" exact component={WelcomeWorld} />
+          <Route path="/gameCatalog" component={GameCatalog} />
+          <Route path="/create" component={CreateGame} />
+          <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
+          <Route path="/games/:gameId" component={GameDetails} />
+        </Switch>
       </main>
+
+      {/* <main id="main-content">
+        { routers[page] || <NoPage />}
+      </main> */}
 
 
     </div>

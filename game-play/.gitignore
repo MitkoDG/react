@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/node_modules react 18
 /server
 /.pnp
 .pnp.js
