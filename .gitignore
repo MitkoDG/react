@@ -6,3 +6,6 @@ fragments-portals-refs/node_modules
 effect-reducers-context/node_modules
 effect-reducers-context/.eslintcache
 usereducer-context/node_modules
+api requests/node_modules
+
+api requests/.eslintcache
