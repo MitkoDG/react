@@ -30,7 +30,7 @@ import MealItem from './MealItem/MealItem';
 //   },
 // ];
 
-
+const mealsDataBaseUrl = 'https://react-http-66a61-default-rtdb.europe-west1.firebasedatabase.app/meals.json';
 
 const AvailableMeals = () => {
   const [meals, setMeals] = useState([]);
@@ -38,7 +38,7 @@ const AvailableMeals = () => {
   const [httpError, setHttpError] = useState();
   useEffect(() => {
     const fetchMeals = async () => {
-      const response = await fetch('https://react-http-66a61-default-rtdb.europe-west1.firebasedatabase.app/meals.json');
+      const response = await fetch(mealsDataBaseUrl);
       
       if (!response.ok) {
         throw new Error('Something went wrong !')
