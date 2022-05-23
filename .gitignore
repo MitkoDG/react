@@ -13,3 +13,5 @@ food-order-app/.eslintcache
 food-order-app/build
 forms-user-input/node_modules
 forms-user-input/.eslintcache
+authentication/node_modules
+authentication/.eslintcache
