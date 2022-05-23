@@ -70,3 +70,7 @@
   background-color: transparent;
   color: #ae82cc;
 }
+
+.errorMsg{
+  color: red;
+}

@@ -15,3 +15,5 @@ forms-user-input/node_modules
 forms-user-input/.eslintcache
 multi-page-spa/node_modules
 multi-page-spa/.eslintcache
+authentication/node_modules
+authentication/.eslintcache
