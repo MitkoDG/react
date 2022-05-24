@@ -6,6 +6,7 @@ const registerUrl = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?k
 
 const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
+  const [isLoading, setIsLoading] = useState(false)
   const [hasError, setHasError] = useState(false);
   const emailInputRef = useRef()
   const passwordInputRef = useRef()
@@ -20,6 +21,7 @@ const AuthForm = () => {
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
 
+    setIsLoading(true)
     if (isLogin) {
 
     } else {
@@ -34,14 +36,17 @@ const AuthForm = () => {
           'Content-Type': 'application/json'
         }
       }).then(res=>{
+        setIsLoading(false)
         if (res.ok) {
           
         } else{
           return res.json().then(data => {
-            console.log(data.error.message);
-            setHasError(data.error.message)
+            let errorMsg = 'Authentication failed';
+            if (data && data.error && data.error.message) {
+              errorMsg = data.error.message;
+            }
+            setHasError(errorMsg)
           })
-          
         }
       })
     }
@@ -63,7 +68,8 @@ const AuthForm = () => {
           {hasError && <p className={classes.errorMsg}>{hasError}</p>}
         </div>
         <div className={classes.actions}>
-          <button>{isLogin ? 'Login' : 'Create Account'}</button>
+          {!isLoading && <button>{isLogin ? 'Login' : 'Create Account'}</button>}
+          {isLoading && <p>Loading...</p>}
           <button
             type='button'
             className={classes.toggle}
