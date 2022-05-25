@@ -59,7 +59,7 @@ const cartReducer = (state, action) => {
   return defaultCartState;
 };
 
-const CartPrivider = (props) => {
+const CartProvider = (props) => {
   const [cartState, dispatchCartAction] = useReducer(cartReducer, defaultCartState);
 
 
@@ -88,4 +88,4 @@ const CartPrivider = (props) => {
   </CartContext.Provider>
 };
 
-export default CartPrivider;
+export default CartProvider;
