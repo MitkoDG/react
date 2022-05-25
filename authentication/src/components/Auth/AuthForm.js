@@ -1,5 +1,5 @@
-import { useState, useRef } from 'react';
-
+import { useState, useRef, useContext } from 'react';
+import AuthContext from '../../store/auth-context';
 import classes from './AuthForm.module.css';
 
 const AuthForm = () => {
@@ -8,6 +8,8 @@ const AuthForm = () => {
   const [hasError, setHasError] = useState(false);
   const emailInputRef = useRef()
   const passwordInputRef = useRef()
+
+  const authCtx = useContext(AuthContext)
 
   const switchAuthModeHandler = () => {
     setIsLogin((prevState) => !prevState);
@@ -37,12 +39,12 @@ const AuthForm = () => {
       headers: {
         'Content-Type': 'application/json'
       }
-    }).then(res=>{
+    }).then((res) => {
       setIsLoading(false)
       if (res.ok) {
-        return res.json()        
-      } else{
-        return res.json().then(data => {
+        return res.json();
+      } else {
+        return res.json().then((data) => {
           let errorMsg = 'Authentication failed';
           if (data && data.error && data.error.message) {
             errorMsg = data.error.message;
@@ -51,14 +53,14 @@ const AuthForm = () => {
           throw new Error(errorMsg) // this is forward the error to the catch block thats why we dont need the prev line
         })
       }
-    }).then(data => {
-      console.log(data);
-    }).catch((err) =>{
+    }).then((data) => {
+      authCtx.login(data.idToken);
+    }).catch((err) => {
       setHasError(err.message)
     })
     setHasError(false);
   }
-  
+
 
   return (
     <section className={classes.auth}>
@@ -75,7 +77,7 @@ const AuthForm = () => {
         </div>
         <div className={classes.actions}>
           {!isLoading && <button>{isLogin ? 'Login' : 'Create Account'}</button>}
-          {isLoading && <p>Loading...</p>}
+          {isLoading && <p>Sending request...</p>}
           <button
             type='button'
             className={classes.toggle}
