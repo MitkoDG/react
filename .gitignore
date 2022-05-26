@@ -17,3 +17,5 @@ multi-page-spa/node_modules
 multi-page-spa/.eslintcache
 authentication/node_modules
 authentication/.eslintcache
+router/node_modules
+router/.eslintcache
