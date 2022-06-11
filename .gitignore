@@ -19,3 +19,5 @@ authentication/node_modules
 authentication/.eslintcache
 router/node_modules
 router/.eslintcache
+quote-app/node_modules
+quote-app/.eslintcache
