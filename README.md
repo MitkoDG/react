@@ -1,7 +1,7 @@
 # ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 
 
-Details of food-order-app 
+**Details of food-order-app**
 - the app fetches the data from a data base based on firebase website
 - you can add dish and qty to the Cart
 - you can open and edit the cart dish or qty
