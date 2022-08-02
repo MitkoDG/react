@@ -2,7 +2,7 @@ import classes from './Counter.module.css';
 
 const Counter = () => {
   const toggleCounterHandler = () => {};
-
+  
   return (
     <main className={classes.counter}>
       <h1>Redux Counter</h1>
