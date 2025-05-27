@@ -7,6 +7,6 @@
 - you can open and edit the cart dish or qty
 - you can also submit the order. The function send a post request to a server and store the data about the order and user
 
-Click here for [Demo](http://food.dimitargegov.website/) !!!
+Click here for [Demo](http://food.dimitargegov.site/) !!!
 
 [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
